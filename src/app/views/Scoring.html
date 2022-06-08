@@ -1,0 +1,78 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <h3>{{LeagueName}}</h3>
+      <br />
+
+      <form>
+        <p>Season starts: {{SeasonStart}} &nbsp;</p>
+        <div class="container" [ngSwitch]="CurrentRole*10">
+          <div *ngSwitchCase="10">Head Referee</div>
+          <div *ngSwitchCase="20">Referee</div>
+          <div *ngSwitchCase="30">Scorekeeper</div>
+          <div *ngSwitchCase="40">Admin</div>
+          <div *ngSwitchDefault>End User</div>
+        </div>
+        <br />
+
+        <p style="font-size: large; margin-left: 50px">
+          Game:
+          <select (change)="onSchedChange($event)">
+            <option
+              *ngFor="let currentRow of MySchedule"
+              value="{{currentRow.id}}"
+            >
+              {{currentRow.HomeTeam + " vs " + currentRow.AwayTeam}}
+            </option>
+          </select>
+        </p>
+
+        <div class="row">
+          <div class="col-md-2">&nbsp;</div>
+          <div class="form-group col-md-3">
+            <label for="HoemTeam" style="float: left; font-size: large"
+              >{{HomeTeam}}</label
+            >
+          </div>
+          <div class="form-group col-md-2">
+            <input
+              type="number"
+              class="form-control"
+              name="HomeScoreVal"
+              [(ngModel)]="HomeScore"
+              style="width: 80px; float: right; text-align: right"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-2">&nbsp;</div>
+          <div class="form-group col-md-3">
+            <label for="AwayTeam" style="float: left; font-size: large"
+              >{{AwayTeam}}</label
+            >
+          </div>
+          <div class="form-group col-md-2">
+            <input
+              type="number"
+              class="form-control"
+              name="AwayScoreVal"
+              [(ngModel)]="AwayScore"
+              style="width: 80px; float: right; text-align: right"
+            />
+          </div>
+        </div>
+        <br />
+
+        <button
+          type="submit"
+          (click)="onRecordScores()"
+          style="font-size: large; margin-left: 50px"
+        >
+          Record Scores
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+

@@ -1,10 +1,15 @@
 import { Component } from '@angular/core';
 
+import { faFutbol } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './views/Main.html',
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'soccerdashboard';
+  faFutbol = faFutbol
+
+  title = 'Soccer Dashboard';
+
 }
